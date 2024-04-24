@@ -12,7 +12,7 @@ def main():
     copilot = Copilot(driver)
     llamados = Llamados(driver)
 
-    news_site.go_local_news_page()
+    news_site.go_local_news_page("Sevilla")
     links = news_site.extract_news_links()
 
     for link in links:

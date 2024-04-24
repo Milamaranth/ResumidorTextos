@@ -8,7 +8,8 @@ class Llamados():
         self.driver = driver
         self.shadow_driver = Shadow(driver)
 
-    def _clean(self,text):
+    @staticmethod
+    def _clean(text):
         text = text.replace('\n',' ')
         return text
     

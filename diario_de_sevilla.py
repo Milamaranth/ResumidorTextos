@@ -7,7 +7,7 @@ class DiarioDeSevilla():
     def __init__(self, driver) -> None:
         self.driver = driver
 
-    def go_local_news_page(self):
+    def go_local_news_page(self, provincia):
         # Abrir la página web de noticias
         self.driver.get("https://www.diariodesevilla.es/")
         
@@ -25,15 +25,15 @@ class DiarioDeSevilla():
         # Mover el ratón sobre el elemento
         action.move_to_element(secciones).perform()
         # Esperar a que aparezca el menú flotante
-        time.sleep(2)
+        time.sleep(3)
         # Hacer clic en el elemento del menú flotante
-        noticias_sevilla = self.driver.find_element(By.LINK_TEXT, "Sevilla")
+        noticias_sevilla = self.driver.find_element(By.LINK_TEXT, provincia)
         noticias_sevilla.click()
 
     def extract_news_links(self):
         logging.info("Extracting news links")
         news_links = []
-        for i in range(9):
+        for i in range(10):
             enlace = self.driver.find_element(By.XPATH, f"//*[@id='browse-target']/article[{i+1}]/h2/a")
             href = enlace.get_attribute('href')
             news_links.append(href)
